@@ -3,17 +3,28 @@ import { User } from '../entity/user.entity';
 
 export default async () => {
 
-await createConnection({
-    type: 'mysql',
-    host: process.env.TEMPLATE_DB_HOST,
-    port: parseInt(process.env.TEMPLATE_DB_PORT || '3306', 10),
-    username: process.env.TEMPLATE_DB_USER,
-    password: process.env.TEMPLATE_DB_PASS, 
-    database: process.env.TEMPLATE_DB,
-    entities: [
-        User,
-    ],
-    synchronize: true,
-});
+    await createConnection(
+    {
+        type: 'mariadb',
+        host: 'localhost',
+        port: 3306,
+        username: 'root',
+        password: '',
+        database: 'av-travel',
+        entities: [
+            'src/entity/**/*.ts',
+        ],
+        synchronize: true,
+        migrations: [
+            'src/migration/**/*.ts'
+         ],
+         subscribers: [
+            'src/subscriber/**/*.ts'
+         ],
+         cli: {
+            entitiesDir: 'src/entity',
+            migrationsDir: 'src/migration',
+            subscribersDir: 'src/subscriber',
+         },
+    });
 };
-
