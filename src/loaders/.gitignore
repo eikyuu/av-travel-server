@@ -59,7 +59,7 @@ typings/
 
 # dotenv environment variables file
 .env
-typeorm.ts
+typeorm
 
 # next.js build output
 .next
