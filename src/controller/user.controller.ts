@@ -17,6 +17,16 @@ export const UserController = (app: Application) => {
 
   userRouter = commonController(userService, userRouter);
 
+  userRouter.get('/:id', async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id, 10);
+    res.send(await userService.getByUserId(id));
+  });
+
+  userRouter.post('/', async (req: Request, res: Response) => {
+    const formData = req.body;
+    res.send(await userService.postUsers(formData));
+  });
+
   app.use('/users', userRouter);
 
 };

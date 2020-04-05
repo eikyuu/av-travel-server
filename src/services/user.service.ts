@@ -1,6 +1,7 @@
 import { getCustomRepository } from 'typeorm';
 import { UserRepository } from '../repository/user.repository';
 import { AbstractService } from '../core/abstract.services';
+import { User } from 'src/entity/user.entity';
 
 /**
  * Cette classe est un service
@@ -12,5 +13,10 @@ export class UserService extends AbstractService {
 
   protected repository = getCustomRepository(UserRepository);
 
+  async getByUserId(id: number) {
+    return await this.repository.findOne(id);
+  }
+  async postUsers(formData: any) {
+    return await this.repository.save(formData);
+  }
 }
-

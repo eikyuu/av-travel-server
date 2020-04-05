@@ -15,10 +15,4 @@ export class User {
     @Column({type: 'varchar', length: 255})
     password!: string;
 
-    @Column({type: 'varchar', length: 255})
-    avatar!: string;
-
-    @Column({ type: 'boolean', default: false})
-    activated!: boolean;
-
 }
