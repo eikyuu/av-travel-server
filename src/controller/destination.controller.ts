@@ -1,6 +1,6 @@
 import { commonController } from './../core/common_functions.controller';
 import express, { Application, Router, Request, Response } from 'express';
-import { UserService } from '../services/user.service';
+import { DestinationService } from '../services/destination.service';
 
 /**
  * Ce controller vous servira de modèle pour construire vos différent controller
@@ -11,22 +11,12 @@ import { UserService } from '../services/user.service';
  */
 export const DestinationController = (app: Application) => {
 
-  const userService = new UserService();
+  const destinationService = new DestinationService();
 
-  let userRouter = Router();
+  let destinationRouter = Router();
 
-  userRouter = commonController(userService, userRouter);
+  destinationRouter = commonController(destinationService, destinationRouter);
 
-  userRouter.get('/:id', async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id, 10);
-    res.send(await userService.getByUserId(id));
-  });
-
-  userRouter.post('/', async (req: Request, res: Response) => {
-    const formData = req.body;
-    res.send(await userService.postUsers(formData));
-  });
-
-  app.use('/users', userRouter);
+  app.use('/destinations', destinationRouter);
 
 };

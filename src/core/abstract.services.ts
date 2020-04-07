@@ -1,20 +1,19 @@
 import { ObjectLiteral, Repository } from 'typeorm';
 
 export abstract class AbstractService {
-
+    // Un singleton est une class ayant une instance unique à travers toute l'app
     protected abstract repository: Repository<ObjectLiteral>;
-    // Business logic
 
     async getAll() {
         return await this.repository.find();
     }
 
     async getById(id: number) {
-        const user = await this.repository.findOne(id);
-        if (!user) {
-            throw new Error('USER NOT FOUND');
+        const element = await this.repository.findOne(id);
+        if (!element) {
+            throw new Error('ELEMENT NOT FOUND');
         }
-        return user;
+        return element;
     }
 
     async create(element: any) {

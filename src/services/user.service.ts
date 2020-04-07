@@ -13,10 +13,4 @@ export class UserService extends AbstractService {
 
   protected repository = getCustomRepository(UserRepository);
 
-  async getByUserId(id: number) {
-    return await this.repository.findOne(id);
-  }
-  async postUsers(formData: any) {
-    return await this.repository.save(formData);
-  }
 }

@@ -1,5 +1,5 @@
 import {EntityRepository, Repository} from 'typeorm';
-import { Destination } from 'src/entity/destination.entity';
+import { Destination } from './../entity/destination.entity';
 /**
  * Cette classe est un repository
  * C'est ici qu'on met tout les accès à la bdd
