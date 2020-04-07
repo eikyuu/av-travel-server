@@ -19,6 +19,9 @@ export class Tours {
     @Column({type: 'integer'})
     price!: number;
 
+    @Column({type: 'text'})
+    image!: string;
+
     @ManyToMany(type => Destination)
     @JoinTable()
     Destinations!: Destination[];

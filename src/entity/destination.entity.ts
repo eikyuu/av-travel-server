@@ -18,4 +18,6 @@ export class Destination {
     @Column({type: 'varchar', length : 255})
     ville!: string;
 
+    @Column({type: 'text'})
+    image!: string;
 }
