@@ -1,6 +1,7 @@
 import express from 'express';
 import 'reflect-metadata';
 import { UserController } from './controller/user.controller';
+import { DestinationController } from './controller/destination.controller';
 import loaders from './loaders';
 
 async function startServer() {
@@ -12,6 +13,7 @@ async function startServer() {
 
     // Ajout des différentes route de votre application
     UserController(app);
+    DestinationController(app);
 
     // Démarrage du serveur une fois que tout est correctement init
     app.listen(3000, () => console.log('Express server  is running 3000'));
