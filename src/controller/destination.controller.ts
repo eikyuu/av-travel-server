@@ -15,6 +15,10 @@ export const DestinationController = (app: Application) => {
 
   let destinationRouter = Router();
 
+  destinationRouter.get('/', async (req: Request, res: Response) => {
+    res.send(await destinationService.getAll());
+  });
+
   destinationRouter = commonController(destinationService, destinationRouter);
 
   app.use('/destinations', destinationRouter);

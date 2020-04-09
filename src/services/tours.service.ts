@@ -13,4 +13,7 @@ export class ToursService extends AbstractService {
 
   protected repository = getCustomRepository(ToursRepository);
 
+  getAll() {
+    return this.repository.find({ relations: ['destinations'] });
+  }
 }

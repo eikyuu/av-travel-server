@@ -2,6 +2,8 @@ import { getCustomRepository } from 'typeorm';
 import { AbstractService } from '../core/abstract.services';
 import { Destination } from 'src/entity/destination.entity';
 import { DestinationRepository } from '../repository/destination.repository';
+import { ToursRepository } from '../repository/tours.repository';
+import { Tours } from 'src/entity/tours.entity';
 
 /**
  * Cette classe est un service
@@ -12,5 +14,9 @@ import { DestinationRepository } from '../repository/destination.repository';
 export class DestinationService extends AbstractService {
 
   protected repository = getCustomRepository(DestinationRepository);
+  protected toursRepository = getCustomRepository(ToursRepository);
 
+  getAll() {
+    return this.repository.find({ relations: ['tours'] });
+  }
 }

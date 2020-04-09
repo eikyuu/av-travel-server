@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Tours } from './tours.entity';
 
 @Entity('destination')
 export class Destination {
@@ -20,4 +21,7 @@ export class Destination {
 
     @Column({type: 'text'})
     image!: string;
+
+    @ManyToMany(type => Tours, tours => tours.destinations)
+    tours?: Tours[];
 }

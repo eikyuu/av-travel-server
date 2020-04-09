@@ -22,8 +22,8 @@ export class Tours {
     @Column({type: 'text'})
     image!: string;
 
-    @ManyToMany(type => Destination)
+    @ManyToMany(type => Destination, destination => destination.tours)
     @JoinTable()
-    Destinations!: Destination[];
+    destinations?: Destination[];
 
 }
