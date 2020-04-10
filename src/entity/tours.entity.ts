@@ -22,6 +22,9 @@ export class Tours {
     @Column({type: 'text'})
     image!: string;
 
+    @Column({type: 'varchar', length : 255})
+    nameImage!: string;
+
     @ManyToMany(type => Destination, destination => destination.tours)
     @JoinTable()
     destinations?: Destination[];
