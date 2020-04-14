@@ -35,14 +35,14 @@ export const commonController = (service: AbstractService, commonRouter = Router
     const id = parseInt(req.params.id, 10);
     const formData = req.body;
     await service.update(id, formData);
-    res.send(`La demande ${id} a bien été modifiée`);
+    res.json();
 
   });
 
   commonRouter.delete('/:id', async (req: Request, res: Response) => {
     const id = parseInt(req.params.id, 10);
     await service.delete(id);
-    res.send(`La demande ${id} a bien été supprimée`);
+    res.json();
   });
 
   return commonRouter;
