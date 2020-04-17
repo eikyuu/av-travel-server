@@ -19,4 +19,14 @@ export class DestinationService extends AbstractService {
   getAll() {
     return this.repository.find({ relations: ['tours'] });
   }
+
+  async addToursToDestination(toursId: number, destinationId: number) {
+    const tour = await this.toursRepository.findOne(toursId);
+    const diffusionList = await this.repository.findOne(destinationId, { relations: ['tours'] });
+    if (diffusionList && tour) {
+      diffusionList?.tours?.push(tour);
+      await this.repository.save(diffusionList);
+    }
+    return diffusionList;
+  }
 }

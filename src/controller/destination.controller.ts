@@ -19,6 +19,12 @@ export const DestinationController = (app: Application) => {
     res.send(await destinationService.getAll());
   });
 
+  destinationRouter.post('/tours', async (req: Request, res: Response) => {
+    const toursId = parseInt(req.body.toursId, 10);
+    const destinationId = parseInt(req.body.destinationId, 10);
+    res.send(await destinationService.addToursToDestination(toursId, destinationId));
+  });
+
   destinationRouter = commonController(destinationService, destinationRouter);
 
   app.use('/destinations', destinationRouter);
